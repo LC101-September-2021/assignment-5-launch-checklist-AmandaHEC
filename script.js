@@ -11,8 +11,8 @@ window.addEventListener("load", function() {
     let form = document.querySelector("form");
     let list = document.getElementById("faultyItems");
     list.style.visibility = "hidden";
-
-form.addEventListener("submit", function(event){
+        
+    form.addEventListener("submit", function(event){
     let pilotName = document.querySelector("form").elements.pilotName.value;
     let copilotName = document.querySelector("form").elements.copilotName.value;
     let fuelLevel = document.querySelector("form").elements.fuelLevel.value;
