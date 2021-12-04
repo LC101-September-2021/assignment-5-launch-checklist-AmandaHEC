@@ -23,15 +23,16 @@ function validateInput(testInput) {
             console.log("All fields are required.");
             return "Empty";
         } else if (isNaN(numberInput)) {
-            console.log("Make sure to enter valid information for each field.")
+            console.log(testInput + "is not a number.")
             return "Not a Number";
-        } else if (!isNaN(numberInput)) {
+        } else {
+            console.log(testInput + "is a number.")
             return "Is a Number";
         }
         
 }
 
-function stopFormSubmission(alertMessage){
+function alert(alertMessage){
     console.log(alertMessage);
     window.alert(alertMessage);
     event.preventDefault();
@@ -43,7 +44,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let copilotStatus = document.getElementById("copilotStatus");
     let fuelStatus = document.getElementById("fuelStatus") ;
     let cargoStatus = document.getElementById("cargoStatus");
-    let list = document.getElementById("launchForm");
+    //let list = document.getElementById("launchForm");
     let div = document.getElementById("launchStatusCheck"); 
     div.innerHTML = `
         <ol>
@@ -57,8 +58,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     function fuelLevelStatus(fuelLevel){
         if (fuelLevel < 10000) {
             list.style.visibility === "visible";
-            let FuelStatus = "There is not enough fuel for the journey.";
-            stopFormSubmission(fuelStatus);
+            let fuelStatus = "There is not enough fuel for the journey.";
+            alert(fuelStatus);
             return fuelStatus;
         }
     }
@@ -68,7 +69,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         function cargoLevelStatus(cargoLevel) {
             if (cargoLevel > 1000) {
                 let cargoStatus = "There is too much mass for the shuttle to take off.";
-                stopFormSubmission(cargoStatus);
+                alert(cargoStatus);
                 return cargoStatus;
             }
         }
@@ -83,15 +84,15 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
                 validateInput(fuelLevel) === "Empty" ||
                 validateInput(cargoLevel) === "Empty"){
 
-                stopFormSubmission("All fields are required");
+                alert("All fields are required");
 
-            } else if (validateInput(fuelLevel === "Not a Number") {
+            } else if (validateInput(fuelLevel === "Not a Number")) {
 
-                stopFormSubmission("Fuel level must be a number");
+                alert("Fuel level must be a number");
 
-            } else if (validateInput(cargoLevel) === "Not a Number") {
+            } else if (validateInput(cargoLevel === "Not a Number")) {
 
-                stopFormSubmission("Cargo Mass must be a number");
+                alert("Cargo Mass must be a number");
 
             } else {
                 list.style.visibility = "visible";
@@ -139,21 +140,22 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         // }
         //     validateInput(testInput);
         
-}
+    }
 
-async function myFetch() {
+    async function myFetch() {
     let planetsReturned;
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
-    return response.json();
+        return response.json();
     });
     
     return planetsReturned;
-}
+    }
 
-function pickPlanet(planets) {
+    function pickPlanet(planets) {
     let chosenPlanet = Math.floor(Math.random() * planets.length);
 
       return planets[chosenPlanet];
+    }
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
