@@ -8,18 +8,29 @@
 //const { formSubmission } = require("./scriptHelper");
 
 window.addEventListener("load", function() {
+
     let form = document.querySelector("form");
     let list = document.getElementById("faultyItems");
     list.style.visibility = "hidden";
         
     form.addEventListener("submit", function(event){
-    let pilotName = document.querySelector("form").elements.pilotName.value;
-    let copilotName = document.querySelector("form").elements.copilotName.value;
-    let fuelLevel = document.querySelector("form").elements.fuelLevel.value;
-    let cargoMass = document.querySelector("form").elements.cargoMass.value;
-        
-    formSubmission(form,list,pilotName,copilotName,fuelLevel,cargoMass);
     event.preventDefault();
+    
+    let pilotName = document.querySelector("input[name=pilotName]");
+    let pilot = pilotName.value 
+    let copilotName = document.querySelector("input[name=copilotName]");
+    let copilot = copilotName.value
+    let fuelLevel = document.querySelector("input[name=fuelLevel]");
+    let fuel = Number(fuelLevel.value)
+    let cargoMass = document.querySelector("input[name=cargoMass]");
+    let cargo = Number(cargoMass.value)
+    // let pilotName = document.querySelector("form").elements.pilotName.value;
+    // let copilotName = document.querySelector("form").elements.copilotName.value;
+    // let fuelLevel = document.querySelector("form").elements.fuelLevel.value;
+    // let cargoMass = document.querySelector("form").elements.cargoMass.value;
+        
+    formSubmission(document, form,list,pilot,copilot,fuel,cargo);
+    
     });
 
 
@@ -37,14 +48,7 @@ window.addEventListener("load", function() {
    })
 
 });
-        //pickPlanet(planets); 
-    // let form = document.querySelector("form");
-    // let list = document.getElementById("faultyItems");
-    // list.style.visibility = "hidden";
-    // let pilot = document.querySelector ("input[name = pilotName]").value;
-    // let copilot = document.querySelector ("input[name = copilotName]").value;
-    // let fuelLevel = document.querySelector ("input[name = fuelLevel]").value;
-    // let cargoLevel = document.querySelector ("input[name = cargoMass]").value;
+        
 
    
       
