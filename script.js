@@ -24,15 +24,10 @@ window.addEventListener("load", function() {
     let fuel = Number(fuelLevel.value)
     let cargoMass = document.querySelector("input[name=cargoMass]");
     let cargo = Number(cargoMass.value)
-    // let pilotName = document.querySelector("form").elements.pilotName.value;
-    // let copilotName = document.querySelector("form").elements.copilotName.value;
-    // let fuelLevel = document.querySelector("form").elements.fuelLevel.value;
-    // let cargoMass = document.querySelector("form").elements.cargoMass.value;
         
     formSubmission(document, form,list,pilot,copilot,fuel,cargo);
     
     });
-
 
     let listedPlanets;
     let listedPlanetsResponse = myFetch();
