@@ -14,19 +14,19 @@ window.addEventListener("load", function() {
     list.style.visibility = "hidden";
         
     form.addEventListener("submit", function(event){
-    event.preventDefault();
-    
-    let pilotName = document.querySelector("input[name=pilotName]");
-    let pilot = pilotName.value 
-    let copilotName = document.querySelector("input[name=copilotName]");
-    let copilot = copilotName.value
-    let fuelLevel = document.querySelector("input[name=fuelLevel]");
-    let fuel = Number(fuelLevel.value)
-    let cargoMass = document.querySelector("input[name=cargoMass]");
-    let cargo = Number(cargoMass.value)
-        
-    formSubmission(document, form,list,pilot,copilot,fuel,cargo);
-    
+        event.preventDefault();
+
+        let pilotName = document.querySelector("input[name=pilotName]");
+        let pilot = pilotName.value 
+        let copilotName = document.querySelector("input[name=copilotName]");
+        let copilot = copilotName.value
+        let fuelLevel = document.querySelector("input[name=fuelLevel]");
+        let fuel = Number(fuelLevel.value)
+        let cargoMass = document.querySelector("input[name=cargoMass]");
+        let cargo = Number(cargoMass.value)
+            
+        formSubmission(document, form,list,pilot,copilot,fuel,cargo);
+
     });
 
     let listedPlanets;
