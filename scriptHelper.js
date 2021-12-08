@@ -56,6 +56,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
         document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
         document.getElementById("pilotStatus").textContent= `Pilot ${pilot} not ready for launch`;
         document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} not ready for launch`;
+        document.getElementById("fuelStatus").textContent = "";
+        document.getElementById("cargoStatus").textContent = "";
+
         alert("All fields are required");
         return false;
         
@@ -102,9 +105,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
             document.getElementById("cargoStatus").textContent = "Cargo mass low enough for launch";
             document.getElementById("pilotStatus").textContent= `Pilot ${pilot} not ready for launch`;
             document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} not ready for launch`;
-            event.preventDefault();
-            // alert("Fuel level too low for launch");
-            // return false;
+          
+            alert("Fuel level too low for launch");
+            return false;
 
         } else if (cargoMass > 10000) {
             
@@ -115,9 +118,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
             document.getElementById("fuelStatus").textContent = "Fuel level high enough for launch";
             document.getElementById("pilotStatus").textContent = `Pilot ${pilot} not ready for launch`;
             document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} not ready for launch`;
-            event.preventDefault();
-            // alert("Cargo mass too high for launch");
-            // return false;
+          
+            alert("Cargo mass too high for launch");
+            return false;
                 
         } else if (cargoMass > 10000 && fuelLevel < 10000){
             
@@ -128,9 +131,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
             document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} not ready for launch`;
             document.getElementById("cargoStatus").textContent = "Cargo mass too heavy for launch";
             document.getElementById("fuelStatus").textContent = "Fuel level too low for launch";
-            event.preventDefault();
-            // alert("Fuel level too low for launch" + "Cargo mass too high for launch");
-            // return false;
+           
+            alert("Fuel level too low for launch" + "Cargo mass too high for launch");
+            return false;
         
         } 
     
@@ -143,7 +146,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
             document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} not ready for launch`;
             document.getElementById("cargoStatus").textContent = "Cargo mass too heavy for launch";
             document.getElementById("fuelStatus").textContent = "Fuel Level too low for launch";
-            event.preventDefault();
+           
             //return true;
            
         } else {
@@ -154,7 +157,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
             document.getElementById("launchStatus").style.color ="rgb(65, 159, 106)";
             document.getElementById("cargoStatus").textContent = "Cargo mass low enough for launch";
             document.getElementById("fuelStatus").textContent= "Fuel level high enough for launch";
-            //return true;
+            // return true;
         
     } 
 }
