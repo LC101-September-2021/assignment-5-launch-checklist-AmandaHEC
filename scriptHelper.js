@@ -18,18 +18,15 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-    //let numberInput = Number(testInput);
-        if (testInput === "") {
-            //console.log("All fields are required.");
-            return "Empty";
+        let result = "";
+        if (testInput === "" || testInput === null ) {
+            result = "Empty";
         } else if (isNaN(testInput)) {
-            //console.log(testInput + " is not a number.")
-            return "Not a Number";
+            result = "Not a Number";
         } else {
-            //console.log(testInput + " is a number.")
-            return "Is a Number";
+            result = "Is a Number";
         }
-        
+        return result;
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
@@ -46,42 +43,39 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     launchStatus = "" ;
    
     
-    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"){
+    if (validateInput === "Empty") {
         document.getElementById("launchStatus").textContent = "Shuttle not ready for launch";
         list.style.visibility = "visible";
         document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
-        document.getElementById("pilotStatus").textContent= `Pilot ${pilot} not ready for launch`;
-        document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} not ready for launch`;
-        document.getElementById("fuelStatus").textContent = "";
-        document.getElementById("cargoStatus").textContent = "";
-
+        // document.getElementById("pilotStatus").textContent= "";
+        // document.getElementById("copilotStatus").textContent = "";
+        // document.getElementById("fuelStatus").textContent = "";
+        // document.getElementById("cargoStatus").textContent = "";
         alert("All fields are required");
        
         
-    }
-     if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoMass) === "Not a Number"){
+    } else if (validateInput === "Not a Number" || validateInput === "Is a Number" ) {
         document.getElementById("launchStatus").textContent = "Shuttle not ready for launch";
         list.style.visibility = "visible";
         document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
-        document.getElementById("pilotStatus").textContent= `Pilot ${pilot} not ready for launch`;
-        document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} not ready for launch`;
-        document.getElementById("fuelStatus").textContent = "Fuel level invalid";
-        document.getElementById("cargoStatus").textContent = "Cargo mass invalid";
+        // document.getElementById("pilotStatus").textContent= "";
+        // document.getElementById("copilotStatus").textContent = "";
+        // document.getElementById("fuelStatus").textContent = "";
+        // document.getElementById("cargoStatus").textContent = "";
         alert("Invalid Entry");
         
-     }
+     
 
-     if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
-        document.getElementById("launchStatus").textContent = "Shuttle not ready for launch";
-        list.style.visibility = "visible";
-        document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
-        document.getElementById("pilotStatus").textContent= `Pilot not ready for launch`;
-        document.getElementById("copilotStatus").textContent = `Co-pilot not ready for launch`;
-        alert("Invalid Entry");
+    // } else if (validateInput === "Is a Number") {
+    //     document.getElementById("launchStatus").textContent = "Shuttle not ready for launch";
+    //     list.style.visibility = "visible";
+    //     document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
+    //     document.getElementById("pilotStatus").textContent= "";
+    //     document.getElementById("copilotStatus").textContent = "";
+    //     alert("Invalid Entry");
 
-     }
-    //////////
-    else if (fuelLevel < 10000) {
+
+    } else if (fuelLevel < 10000) {
         console.log("Fuel");
         document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("launchStatus").textContent = "Shuttle Not Ready for Launch";
@@ -92,8 +86,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
         document.getElementById("pilotStatus").textContent= `Pilot ${pilot} not ready for launch`;
         document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} not ready for launch`;
         
-    } 
-    else if (cargoMass > 10000) {
+    } else if (cargoMass > 10000) {
         console.log("cargoMass");
         document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("launchStatus").textContent = "Shuttle Not Ready for Launch";
@@ -134,18 +127,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
         document.getElementById("launchStatus").style.color ="rgb(65, 159, 106)";
         document.getElementById("cargoStatus").textContent = "Cargo mass low enough for launch";
         document.getElementById("fuelStatus").textContent= "Fuel level high enough for launch";
-        
-        
     } 
-    // } else {
-    //     list.style.visibility = "visible";
-    //     document.getElementById("pilotStatus").textContent= `Pilot ${pilot} Ready`;
-    //     document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} Ready`;
-    //     document.getElementById("cargoStatus").textContent = "Cargo mass low enough for launch";
-    //     document.getElementById("fuelStatus").textContent = "Fuel level high enough for launch";
-        
 }
-// (fuelStatus === "Fuel level too low for launch") && (cargoStatus === "Cargo mass too heavy for launch")
 
     async function myFetch() {
     let planetsReturned;
