@@ -43,10 +43,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     launchStatus = "" ;
    
     
-    if (validateInput === "Empty") {
-        document.getElementById("launchStatus").textContent = "Shuttle not ready for launch";
-        list.style.visibility = "visible";
-        document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
+    if (validateInput() === "Empty") {
+        // document.getElementById("launchStatus").textContent = "Shuttle not ready for launch";
+        // list.style.visibility = "visible";
+        // document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
         // document.getElementById("pilotStatus").textContent= "";
         // document.getElementById("copilotStatus").textContent = "";
         // document.getElementById("fuelStatus").textContent = "";
@@ -54,10 +54,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
         alert("All fields are required");
        
         
-    } else if (validateInput === "Not a Number" || validateInput === "Is a Number" ) {
-        document.getElementById("launchStatus").textContent = "Shuttle not ready for launch";
-        list.style.visibility = "visible";
-        document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
+    } else if (validateInput() === "Not a Number" || validateInput() === "Is a Number" ) {
+        // document.getElementById("launchStatus").textContent = "Shuttle not ready for launch";
+        // list.style.visibility = "visible";
+        // document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
         // document.getElementById("pilotStatus").textContent= "";
         // document.getElementById("copilotStatus").textContent = "";
         // document.getElementById("fuelStatus").textContent = "";
